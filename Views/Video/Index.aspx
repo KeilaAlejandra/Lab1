@@ -4,12 +4,21 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title>Index</title>
+    <title> VISTA DEL CONTROLADOR DE VIDEOS </title>
 </head>
 <body>
-    <h1> AGREGAR VIDEO </h1>
-    <h1> ELIMINAR VIDEO </h1>
-    <h1>MODIFICAR VIDEO </h1>
-    <h1>ACTUALIZAR VIDEO </h1>
+    <h1>LISTA DE VIDEOS</h1>
+    Hay<%:((System.Data.DataTable)ViewData["DataVideo"]).Rows.Count%>Video
+    <hr />
+    <%foreach (System.Data.DataRow Video
+          in ((System.Data.DataTable)ViewData["DataVideo"]).Rows)
+      {%> 
+    <p> <%:Video["Titulo"].ToString()%></p>
+    <iframe width="560" height="315" src="<%:Video["url"].ToString() %>" 
+    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope;
+    picture-in-picture" allowfullscreen></iframe>
+    <%
+      } %>
+
 </body>
 </html>

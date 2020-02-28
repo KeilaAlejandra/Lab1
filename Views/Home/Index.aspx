@@ -4,9 +4,21 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title>Home</title>
+    <title>OPCIONES</title>
 </head>
 <body>
-    <h1> BIENVENIDO  </h1>
+    <h1>  
+     <a href="/Video/Index">Ver videos </a>
+    <hr />
+    </h1>
+    <a href="/Video/AgregarVideo"> AGREGAR VIDEO </a>
+    <hr />
+    <a href="/Video/EliminarVideo">ELIMINAR VIDEO</a>
+    <hr />
+    <a href="/Video/ModificarVideo">Modificar Video</a>
+    <hr />
+    <a href="/Video/EliminarXReproduccion">ELIMINAR VIDEO POR REPRODUCCION</a>
+    <hr />
+
 </body>
 </html>
