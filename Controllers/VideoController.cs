@@ -35,26 +35,40 @@ namespace MvcPlantilla.Controllers
         }
 
         [HttpPost]
-        public ActionResult Agregar(int idVideo, string Titulo, int NumRepro,string url)
+        public ActionResult Agregar(int idVideo, string Titulo, int numRepro,string url)
         {
 
             List<SqlParameter> Parametros = new List<SqlParameter>();
             Parametros.Add(new SqlParameter("@idVideo",idVideo));
             Parametros.Add(new SqlParameter("@Titulo",Titulo));
-            Parametros.Add(new SqlParameter("@numRepro", NumRepro));
+            Parametros.Add(new SqlParameter("@numRepro", numRepro));
             Parametros.Add(new SqlParameter("@url", url));
             BaseHelper.ejecutarSentencia("INSERT INTO Video VALUES(@idVideo,@Titulo,@numRepro,@url)",CommandType.Text,Parametros);
 
             return View();
         }
         [HttpPost]
-        public ActionResult EliminarVideo()
+        public ActionResult EliminarVideo(int idVideo,string Titulo,int numRepro,String url)
         {
+            List<SqlParameter> Parametros = new List<SqlParameter>();
+            Parametros.Add(new SqlParameter("@idVideo",idVideo));
+            Parametros.Add(new SqlParameter("@Titulo",Titulo));
+            Parametros.Add(new SqlParameter("@numRepro",numRepro));
+            Parametros.Add(new SqlParameter("@url",url));
+            //preg delete
+            BaseHelper.ejecutarSentencia("DELETE from Video where @idVideo=idVideo(@idVideo,@Titulo,@numRepro,@url)",CommandType.Text,Parametros);
             return View();
         }
          [HttpPost]
-        public ActionResult ModificarVideo()
+        public ActionResult ModificarVideo(int idVideo,string Titulo,int numRepro,string url)
         {
+            List<SqlParameter> Parametros = new List<SqlParameter>();
+            Parametros.Add(new SqlParameter("@idVideo", idVideo));
+            Parametros.Add(new SqlParameter("@Titulo", Titulo));
+            Parametros.Add(new SqlParameter("@numRepro", numRepro));
+            Parametros.Add(new SqlParameter("@url", url));
+            //preguntar lo del where
+            BaseHelper.ejecutarSentencia("UPDATE Video where @idVideo=idVideo(@idVideo,@Titulo,@numRepro,@url)", CommandType.Text, Parametros);
             return View();
         }
           [HttpPost]
