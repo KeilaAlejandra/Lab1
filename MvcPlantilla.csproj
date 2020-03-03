@@ -80,7 +80,6 @@
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Video\AgregarVideo.aspx" />
     <Content Include="Views\Video\EliminarVideo.aspx" />
-    <Content Include="Views\Video\EliminarXReproduccion.aspx" />
     <Content Include="Views\Video\Index.aspx" />
     <Content Include="Views\Video\ModificarVideo.aspx" />
     <Content Include="Web.config" />

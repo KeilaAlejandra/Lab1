@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using MVCPlantilla.Utilerias;
 
-
 using System.Data;
 using System.Data.SqlClient;
 
@@ -23,10 +22,8 @@ namespace MvcPlantilla.Controllers
             ViewData["DataVideo"] = BaseHelper.ejecutarConsulta(
                                                           "select* from Video",
                                                           CommandType.Text);
-
             return View();
         }
-
 
         public ActionResult AgregarVideo()
         {     
@@ -35,46 +32,49 @@ namespace MvcPlantilla.Controllers
         }
 
         [HttpPost]
-        public ActionResult Agregar(int idVideo, string Titulo, int numRepro,string url)
+        public ActionResult Agregar(int idVideo, string Titulo, int numRepro,string urll)
         {
 
             List<SqlParameter> Parametros = new List<SqlParameter>();
             Parametros.Add(new SqlParameter("@idVideo",idVideo));
             Parametros.Add(new SqlParameter("@Titulo",Titulo));
             Parametros.Add(new SqlParameter("@numRepro", numRepro));
-            Parametros.Add(new SqlParameter("@url", url));
-            BaseHelper.ejecutarSentencia("INSERT INTO Video VALUES(@idVideo,@Titulo,@numRepro,@url)",CommandType.Text,Parametros);
+            Parametros.Add(new SqlParameter("@urll", urll));
+            BaseHelper.ejecutarSentencia("INSERT INTO Video VALUES(@idVideo,@Titulo,@numRepro,@urll)",CommandType.Text,Parametros);
+
+            return View();
+        }
+        public ActionResult EliminarVideo()
+        {
 
             return View();
         }
         [HttpPost]
-        public ActionResult EliminarVideo(int idVideo,string Titulo,int numRepro,String url)
+        public ActionResult EliminarVideo(int idVideo)
         {
             List<SqlParameter> Parametros = new List<SqlParameter>();
             Parametros.Add(new SqlParameter("@idVideo",idVideo));
-            Parametros.Add(new SqlParameter("@Titulo",Titulo));
-            Parametros.Add(new SqlParameter("@numRepro",numRepro));
-            Parametros.Add(new SqlParameter("@url",url));
             //preg delete
-            BaseHelper.ejecutarSentencia("DELETE from Video where @idVideo=idVideo(@idVideo,@Titulo,@numRepro,@url)",CommandType.Text,Parametros);
+            BaseHelper.ejecutarSentencia("DELETE from Video where @idVideo=idVideo",CommandType.Text,Parametros);
+            return View();
+        }
+        public ActionResult ModificarVideo()
+        {
+
             return View();
         }
          [HttpPost]
-        public ActionResult ModificarVideo(int idVideo,string Titulo,int numRepro,string url)
+        public ActionResult ModificarVideo(int idVideo,string Titulo,int numRepro,string urll)
         {
             List<SqlParameter> Parametros = new List<SqlParameter>();
             Parametros.Add(new SqlParameter("@idVideo", idVideo));
             Parametros.Add(new SqlParameter("@Titulo", Titulo));
             Parametros.Add(new SqlParameter("@numRepro", numRepro));
-            Parametros.Add(new SqlParameter("@url", url));
+            Parametros.Add(new SqlParameter("@urll", urll));
             //preguntar lo del where
-            BaseHelper.ejecutarSentencia("UPDATE Video where @idVideo=idVideo(@idVideo,@Titulo,@numRepro,@url)", CommandType.Text, Parametros);
+            BaseHelper.ejecutarSentencia("UPDATE Video (@idVideo,@Titulo,@numRepro,@urll)", CommandType.Text, Parametros);
             return View();
         }
-          [HttpPost]
-        public ActionResult EliminarXReproduccion()
-        {
-            return View();
-        }
+         
     }
 }

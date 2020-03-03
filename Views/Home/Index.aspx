@@ -17,8 +17,6 @@
     <hr />
     <a href="/Video/ModificarVideo">Modificar Video</a>
     <hr />
-    <a href="/Video/EliminarXReproduccion">ELIMINAR VIDEO POR REPRODUCCION</a>
-    <hr />
 
 </body>
 </html>

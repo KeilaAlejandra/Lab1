@@ -7,8 +7,26 @@
     <title>ModificarVideo</title>
 </head>
 <body>
-    <div>
-    
-    </div>
+  
+    <form action="/Video/ModificarVideo" method="post">
+    <fieldset>
+    <legend> Modificar Datos del Video </legend>
+
+    <label for="idVideo">idVideo:</label>
+    <input type="text" name="idVideo" />
+
+    <label for="Titulo">Titulo:</label>
+    <input type="text" name="Titulo" />
+
+    <label for="numRepro">Num.Reproducciones:</label>
+    <input type="text" name="numRepro" />
+
+    <label for="urll">Url:</label>
+    <input type="text" name="urll" />
+
+    <input type="submit" value= "Modificar" />
+
+    </fieldset>
+    </form>
 </body>
 </html>

@@ -4,11 +4,20 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title>EliminarVideo</title>
+    <title> Vista de Eliminar Video</title>
 </head>
 <body>
-    <div>
+    <form action="/Video/EliminarVideo" method="post">
+    <fieldset>
+    <legend>VIDEO ELIMINADO</legend>
+
+    <label for="idVideo">Id Video: </label>
+    <input type="text" name= "idVideo" />
+
+
+    <input type="submit" value= "Eliminar" />
     
-    </div>
+    </fieldset>
+    </form>
 </body>
 </html>
