@@ -42,7 +42,7 @@ namespace MvcPlantilla.Controllers
             Parametros.Add(new SqlParameter("@urll", urll));
             BaseHelper.ejecutarSentencia("INSERT INTO Video VALUES(@idVideo,@Titulo,@numRepro,@urll)",CommandType.Text,Parametros);
 
-            return View();
+            return RedirectToAction("Index", "Video");
         }
         public ActionResult EliminarVideo()
         {
@@ -56,7 +56,7 @@ namespace MvcPlantilla.Controllers
             Parametros.Add(new SqlParameter("@idVideo",idVideo));
             //preg delete
             BaseHelper.ejecutarSentencia("DELETE from Video where @idVideo=idVideo",CommandType.Text,Parametros);
-            return View();
+            return RedirectToAction("Index", "Video");
         }
         public ActionResult ModificarVideo()
         {
@@ -72,8 +72,8 @@ namespace MvcPlantilla.Controllers
             Parametros.Add(new SqlParameter("@numRepro", numRepro));
             Parametros.Add(new SqlParameter("@urll", urll));
             //preguntar lo del where
-            BaseHelper.ejecutarSentencia("UPDATE Video (@idVideo,@Titulo,@numRepro,@urll)", CommandType.Text, Parametros);
-            return View();
+            BaseHelper.ejecutarSentencia("UPDATE Video SET Titulo=@Titulo,numRepro=@numRepro,urll=@urll where idVideo=@idVideo", CommandType.Text, Parametros);
+            return RedirectToAction("Index", "Video");
         }
          
     }
